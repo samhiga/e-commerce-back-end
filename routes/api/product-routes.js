@@ -19,7 +19,6 @@ router.get('/', async(req, res) => {
     res.status(500).json(err);
   }
 });
-// DOESNT WORK
 // get one product
 router.get('/:id', async(req, res) => {
   // find a single product by its `id`

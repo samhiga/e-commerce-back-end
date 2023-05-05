@@ -12,14 +12,14 @@
 | dotenv | [https://www.npmjs.com/package/dotenv?activeTab=readme](https://www.npmjs.com/package/dotenv?activeTab=readme)   |
 | Sequelize | [https://sequelize.org/](https://sequelize.org/)   |
 | Insomnia | [https://insomnia.rest/download](https://insomnia.rest/download)   |
-
+| Express | [https://expressjs.com/](https://expressjs.com/)   |
 
 
 ## Description 
 
- Walkthrough Video [https://drive.google.com/file/d/1AZt1NNpJ5JYkw5TOZriS2GYjSnq2EmNv/view]
+ Walkthrough Video [https://drive.google.com/file/d/1YF19Ex6JgM9sWn0iKCNXlFTo6J23lAa6/view]
 
-This program stores employee information in a database. Users can reference the data via the CLI, they see information on different departments, different roles, and employee salaries, among others. They can also add employees, update their roles, add new roles, and add departments.
+This program stores information in a database for a retail store. Users can reference the data via Insomnia, in which they can see information on different items and categories that the store has. They can also add items and edit their information as well.
 
 
 
@@ -35,37 +35,62 @@ This program stores employee information in a database. Users can reference the 
 
 ## Javascript Example
 
-To get a hold of this project, simply navigate to my Github profile and select the repo "employee-tracker". From there copy the SSH link into your terminal, Gitbash, or whatever application you prefer and use git copy and then paste the link. You can then open it using VS Code and run it using node.
+To get a hold of this project, simply navigate to my Github profile and select the repo "e-commerce-back-end". From there copy the SSH link into your terminal, Gitbash, or whatever application you prefer and use git copy and then paste the link. You can then open it using VS Code and run it using node and view it in Insomnia.
 
 
 ```javascript
-  
+   id: {
+      type: DataTypes.INTEGER,
+      allowNul: false,
+      primaryKey: true, 
+      autoIncrement: true, 
+    },
+    product_name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    price: {
+      type: DataTypes.DECIMAL(10,2),
+      allowNull: false, 
+      validate: {
+        isDecimal: true
+      }
 ```
 
-In the above code, I used if statements and connection.query to display whatever the user prompted.
+In the above code, I set up the fields and rules for all the models.
 
 ```javascript
+router.get('/', async(req, res) => {
+  // find all categories
+  // be sure to include its associated Products
+  try {
+    const categoryData = await Category.findAll( {
+      include: [{ model: Product }],
+    });
+
+    res.status(200).json(categoryData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
   
 ```
 
-In order to make it so users can select the actual name of the role instead of just a number, I created an array that contained the roles and their corresponding numbers. Using object.keys, I then was able to link it so that array displayed as the choices while still updating the db properly.
+Used the .get method for all api routes to view the data in Insomnia. Similar methods were used for .post, .put, and .delete.
 
 
 ## Usage 
-To use the employee tracker, you must first acquire it through GitHub, see above how to do this. After you open it in VS Code, you may then use your computer's terminal or the terminal in VS Code. Make sure you are inside this repository in the terminal, the run node index.js to begin. You will then be prompted to a menu to view and change items. Just select what you want to do using the arrow keys and follow the prompts.
+To use the employee tracker, you must first acquire it through GitHub, see above how to do this. After you open it in VS Code, you may then use your computer's terminal or the terminal in VS Code. Make sure you are inside this repository in the terminal, and run "npm install" and then log on to mysql and create the data base using "source schema.sql" or "CREATE DATABASE ecommerce_db;". After that run "npm start" or "node server.js". Open up Insomnia and copy the port link and add /api/categories, products, or tags to view, add, or delete the data you want. 
 
 
-<img src="./assets/menu.jpeg" width=400></br>
-<img src="./assets/ViewEmployee.jpeg" width=400>
-<img src="./assets/updateEmployee.jpeg" width=400></br>
-<img src="./assets/viewRole.jpeg" width=400></br>
-<img src="./assets/viewDepartment.jpeg" width=400></br>
+<img src="./assets/category.jpeg" width=400></br>
+<img src="./assets/tag.jpeg" width=400>
+<img src="./assets/product.jpeg" width=400></br>
 
 
 ## Learning Points 
 
 
-Through this project, I got a good chance to use Inquirer again. I also got a good amount of experience working with SQL and mysql2 databases and how to implement them into a project.
+Through this project, I got a really good understanding of Insomnia and how make get, post, put, and delete requests. I also got a good understanding for constructing api routes.
 
 
 ## Author Info
