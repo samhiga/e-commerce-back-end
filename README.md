@@ -17,7 +17,7 @@
 
 ## Description 
 
-Please View the Walkthrough Video [https://drive.google.com/file/d/1AZt1NNpJ5JYkw5TOZriS2GYjSnq2EmNv/view]
+ Walkthrough Video [https://drive.google.com/file/d/1AZt1NNpJ5JYkw5TOZriS2GYjSnq2EmNv/view]
 
 This program stores employee information in a database. Users can reference the data via the CLI, they see information on different departments, different roles, and employee salaries, among others. They can also add employees, update their roles, add new roles, and add departments.
 
@@ -39,36 +39,13 @@ To get a hold of this project, simply navigate to my Github profile and select t
 
 
 ```javascript
-  .then(function(answer){
-        console.log(answer)
-        if (answer.task === "View All Employees"){
-          connection.query("SELECT * FROM employee INNER JOIN role ON employee.role_id = role.id", function(err, result){
-            if (err) throw err;
-            console.table(result)
-            runProgram()
-          })
-        }
-        if (answer.task === "View All Deparments"){
-          connection.query("SELECT * FROM department", function(err, result){
-            if (err) throw err;
-            console.table(result)
-            runProgram()
-          })
-        }
+  
 ```
 
 In the above code, I used if statements and connection.query to display whatever the user prompted.
 
 ```javascript
-  {
-              type: "list",
-              name: "role_id",
-              message: "What is their role ?",
-              choices: Object.keys(roles).map(key => ({
-                name: `${roles[key]} (${key})`,
-                value: key
-              }))
-            },
+  
 ```
 
 In order to make it so users can select the actual name of the role instead of just a number, I created an array that contained the roles and their corresponding numbers. Using object.keys, I then was able to link it so that array displayed as the choices while still updating the db properly.
