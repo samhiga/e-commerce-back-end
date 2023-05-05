@@ -8,9 +8,10 @@
 | Node.js | [https://nodejs.org/api/cli.html](https://nodejs.org/api/cli.html)   |
 | MySQL | [https://www.mysql.com/](https://www.mysql.com/)   |
 | NPM | [https://www.npmjs.com/](https://www.npmjs.com/)   |
-| Inquirer | [https://www.npmjs.com/package/inquirer/v/8.2.4](https://www.npmjs.com/package/inquirer/v/8.2.4)   |
 | mysql2 | [https://www.npmjs.com/package/mysql2](https://www.npmjs.com/package/mysql2)   |
-| dotenv | [https://www.npmjs.com/package/mysql2](https://www.npmjs.com/package/mysql2)   |
+| dotenv | [https://www.npmjs.com/package/dotenv?activeTab=readme](https://www.npmjs.com/package/dotenv?activeTab=readme)   |
+| Sequelize | [https://sequelize.org/](https://sequelize.org/)   |
+| Insomnia | [https://insomnia.rest/download](https://insomnia.rest/download)   |
 
 
 
